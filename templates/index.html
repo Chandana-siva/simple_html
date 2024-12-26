@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10;
+            padding: 10;
+            height: 100vh;
+            background-image: url('https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/97/4b/8b/974b8bab-d216-050b-75bc-7fea31929cc3/AppIcon-1x_U007emarketing-0-10-0-sRGB-85-220-0.png/1200x630wa.png'); /* Replace this with your image URL */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        #leave-table {
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Leave Management</h1>
+        <div class="btn-container">
+            <button class="button" onclick="showLeaveSummary()">Leave Summary</button>
+            <button class="button" onclick="showTotalLeaves()">Total Leaves Applied</button>
+        </div>
+
+        <div id="leave-table"></div>  <!-- This is where the leave summary table will be displayed -->
+    </div>
+
+    <script>
+        // Function to fetch and display the leave summary
+        function showLeaveSummary() {
+            // Make an AJAX request to the /leaves_summary route
+            fetch('/leaves_summary')
+                .then(response => response.text())  // Get the response as text (HTML)
+                .then(data => {
+                    // Insert the leave data (HTML table) into the 'leave-table' div
+                    document.getElementById('leave-table').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Error fetching leave summary:', error);
+                    alert('Failed to fetch leave summary.');
+                });
+        }
+
+        // Placeholder function for "Total Leaves Applied" button
+        function showTotalLeaves() {
+            alert("Displaying Total Leaves Applied");
+        }
+    </script>
+</body>
+</html>
