@@ -3,35 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leave Management</title>
+    <title>Leave Summary</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            height: 100vh;
-            background-image: url('https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/97/4b/8b/974b8bab-d216-050b-75bc-7fea31929cc3/AppIcon-1x_U007emarketing-0-10-0-sRGB-85-220-0.png/1200x630wa.png');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background-color: #f4f4f4;
         }
 
         .container {
-            max-width: 1000px;
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
-            padding: 30px;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: white;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 80%;
-            height: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         h1 {
             text-align: center;
-            color: #333;
             margin-bottom: 20px;
         }
 
@@ -57,14 +48,29 @@
             background-color: #45a049;
         }
 
+        .table-container {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Leave Management</h1>
+        <h1>Leave Summary</h1>
         <div class="btn-container">
-            <a href="/leaves_summary">
-                <button class="button">Leave Summary (PDF)</button>
+            <a href="/">
+                <button class="button">Go Back</button>
+            </a>
+        </div>
+
+        <!-- Display the table -->
+        <div class="table-container">
+            {{ data | safe }}
+        </div>
+
+        <!-- Add the Download Excel button -->
+        <div class="btn-container">
+            <a href="/download_excel">
+                <button class="button">Download Excel</button>
             </a>
         </div>
     </div>
